@@ -1,0 +1,21 @@
+﻿ProduitID;Produit;Categorie;PrixCatalogue
+1;Portable Pro;Informatique;552.5
+2;Portable Air;Informatique;739.5
+3;PC Bureau;Informatique;926.5
+4;Mini PC;Informatique;1113.5
+5;Station Studio;Informatique;1300.5
+6;Ecran 27;Peripheriques;71.5
+7;Clavier;Peripheriques;95.7
+8;Souris;Peripheriques;119.9
+9;Webcam;Peripheriques;144.1
+10;Casque;Peripheriques;168.3
+11;Laser Pro;Impression;188.5
+12;Jet Couleur;Impression;252.3
+13;Multifonction;Impression;316.1
+14;Scanner;Impression;379.9
+15;Etiqueteuse;Impression;443.7
+16;Routeur;Reseau;117.0
+17;Switch;Reseau;156.6
+18;Point Wi-Fi;Reseau;196.2
+19;Pare-feu;Reseau;235.8
+20;Adaptateur;Reseau;275.4
