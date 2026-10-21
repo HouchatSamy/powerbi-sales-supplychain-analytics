@@ -1,65 +1,124 @@
-# Power BI — Sales & Supply Chain Analytics
+# 📊 Power BI — Sales & Supply Chain Analytics
 
-Ce dépôt regroupe mes travaux décisionnels et analytiques réalisés avec **Microsoft Power BI**.
+Ce dépôt regroupe un projet décisionnel et analytique complet réalisé avec **Microsoft Power BI**, appliqué au cas d'usage d'une entreprise de distribution commerciale (**NOVA COMMERCE**).
 
-L’objectif de ce projet est de concevoir un rapport interactif permettant de piloter et d'analyser les ventes, les livraisons (Supply Chain), les objectifs commerciaux et la rentabilité globale de l’entreprise selon plusieurs dimensions :
-
-- **Produits & Catégories** : performance par gamme et prix catalogue ;
-- **Clients & Segments** : segmentation de la clientèle et fidélisation ;
-- **Régions & Canaux de vente** : couverture géographique et efficacité commerciale ;
-- **Analyse temporelle** : tendances, saisonnalités et évolutions périodiques ;
-- **Rentabilité** : chiffre d’affaires, remises, coûts de revient et marges ;
-- **Supply Chain** : délais de livraison, retards, qualité de service et taux de service (OTIF) ;
-- **KPI & Objectifs** : suivi des indicateurs clés de performance et atteinte des objectifs.
+L’objectif est de fournir un tableau de bord interactif d'aide à la décision permettant de piloter simultanément la **performance commerciale**, la **rentabilité financière**, le **suivi des objectifs** et l'**efficacité logistique (Supply Chain / OTIF)**.
 
 ---
 
-## Modèle de données & Schéma en étoile
-
-Le modèle relationnel repose sur un **schéma en étoile (Star Schema)** reliant des tables de faits et des tables de dimensions standardisées (dossier `Donnees_CSV/`) :
-
-### Tables de dimensions
-* `DimClient.csv` : identifiants, profils et segments clients ;
-* `DimProduit.csv` : nomenclature produits, catégories et tarification ;
-* `DimRegion.csv` : hiérarchie géographique et secteurs commerciaux ;
-* `DimCanal.csv` : canaux de distribution (direct, distributeurs, web) ;
-* `DimDate.csv` : table calendrier continue et gestion des périodes fiscales.
-
-### Tables de faits
-* `FactVentes.csv` : transactions de vente, volumes, montants bruts, remises, coûts et retours ;
-* `FactLivraisons.csv` : commandes, dates promises, dates réelles d'expédition et statuts de service ;
-* `FactObjectifs.csv` : quotas et objectifs commerciaux cibles par période, canal et région.
-
-### Paramètres
-* `ParamRemise.csv` : table de simulation et gestion des seuils de remises additionnelles.
+## 📑 Sommaire
+- [Tableaux de bord & Visualisations](#-tableaux-de-bord--visualisations)
+  - [1. Vue d'ensemble (Synthèse de Direction)](#1-vue-densemble--synthèse-de-direction)
+  - [2. Clients & Commandes](#2-clients--commandes)
+  - [3. Livraisons & Performance Supply Chain (OTIF)](#3-livraisons--performance-supply-chain-otif)
+- [Modèle de données & Schéma en étoile](#-modèle-de-données--schéma-en-étoile)
+- [Organisation des Mesures DAX](#-organisation-des-mesures-dax)
+- [Jeux de données & Architecture](#-jeux-de-données--architecture)
+- [Compétences mises en pratique](#-compétences-mises-en-pratique)
+- [Consultation du rapport](#-consultation-du-rapport)
 
 ---
 
-## Contenu du dépôt
+## 🖥️ Tableaux de bord & Visualisations
 
-* `powerbi-sales-supplychain-analytics.pbix` : rapport Power BI Desktop complet avec modèle de données, mesures DAX et tableaux de bord interactifs ;
-* `Donnees_CSV/` : ensemble des jeux de données sources (tables de faits, de dimensions et paramètres) ;
-* `README.md` : documentation de présentation du projet.
+### 1. Vue d'ensemble (Synthèse de Direction)
+Ce tableau de bord offre une synthèse macro-économique des performances de l'entreprise (2024–2025) :
+* **KPIs stratégiques** : Chiffre d'affaires net (**13M €**), Marge brute (**4M €**), Taux de marge moyen (**30,3%**), Objectif commercial (**3M €**) et Taux d'atteinte (**396,9%**) ;
+* **Analyse temporelle** : Évolution mensuelle comparée du CA net face aux objectifs budgétaires ;
+* **Ventilation multidimensionnelle** : Performance par région commerciale (Est, Île-de-France, Nord, Ouest, Sud), répartition par canal de vente (Web, Agence, Partenaires) et rentabilité par catégorie de produits (Informatique, Impression, Périphériques, Réseau).
 
----
-
-## Compétences mises en pratique
-
-* **ETL & Préparation de données** : extraction, nettoyage et transformation avec Power Query ;
-* **Modélisation dimensionnelle** : conception du schéma en étoile, cardinalités (1-*), relations actives/inactives et gestion de la table Date ;
-* **Calculs & Logique DAX** : mesures d'agrégation, calculs de ratios, fonctions de Time Intelligence (`SAMEPERIODLASTYEAR`, `YTD`, `TOTALYTD`), filtres de contexte (`CALCULATE`, `FILTER`) ;
-* **Data Visualisation & Storytelling** : tableaux de bord ergonomiques, cartes KPI, filtres croisés et aides visuelles à la décision ;
-* **Analyse de performance métier** : pilotage du chiffre d'affaires, marge commerciale et suivi des engagements logistiques (Supply Chain).
+![Vue d'ensemble](images/Vue_d_ensemble.png)
 
 ---
 
-## Consultation du rapport
+### 2. Clients & Commandes
+Cette page analyse en profondeur la structure de la clientèle, les comportements d'achat et le portefeuille commercial :
+* **Indicateurs clés** : Nombre de clients actifs (**180**), volume de commandes (**1 448**), panier moyen (**1 891 €**), chiffre d'affaires moyen par client (**15K €**) et fréquence d'achat (**8,0 commandes/client**) ;
+* **Segmentation client** : Répartition du CA par profil (Éducation, Grands comptes, Particuliers, PME) ;
+* **Dynamique d'engagement** : Suivi mensuel de la volumétrie des clients actifs et répartition des commandes selon le canal de distribution ;
+* **Détail du portefeuille** : Table matricielle détaillée des clients avec CA généré, fréquence de commande et valeur du panier moyen.
 
-1. Installer **Microsoft Power BI Desktop** ;
-2. Cloner ou télécharger le dépôt :
+![Clients & Commandes](images/Clients%20%26%20Commandes.png)
+
+---
+
+### 3. Livraisons & Performance Supply Chain (OTIF)
+Un tableau de bord orienté logistique et qualité de service, fondé sur l'indicateur international **OTIF** (*On-Time In-Full*) :
+* **Indicateurs de service** : Taux OTIF global (**64,8%** vs objectif cible pédagogique de **95%**), taux de ponctualité *On Time* (**70,0%**), taux de complétude *In Full* (**89,3%**) et *Fill Rate* (**94,9%**) ;
+* **Analyse des dysfonctionnements** : Suivi des commandes non conformes (**2 530**) et retard moyen constaté (**13,9 jours**) ;
+* **Diagnostic & causes d'échec** : Répartition des anomalies logistiques (retards, commandes incomplètes, reliquats/en attente) ;
+* **Matrice territoriale** : Comparaison du taux de service et des retards selon les régions et canaux de distribution.
+
+![Livraisons & OTIF](images/Livraison%20%26%20OTIF%20.png)
+
+---
+
+## 🧩 Modèle de données & Schéma en étoile
+
+Le modèle relationnel a été conçu selon les règles de l'art du décisionnel sous un **schéma en étoile (Star Schema)** garantissant des performances optimales et une clarté dans la propagation des filtres :
+
+![Vue Modèle](images/Vue%20Model%20.png)
+
+### Architecture relationnelle
+* **Tables de dimensions (1)** :
+  * `DimClient` : données signalétiques, typologie et segmentation ;
+  * `DimProduit` : hiérarchie catalogue, familles et prix de référence ;
+  * `DimRegion` : organisation territoriale et secteurs commerciaux ;
+  * `DimCanal` : circuits de distribution (Direct/Agence, Partenaires, Web) ;
+  * `DimDate` : calendrier continu, gestion des granularités temporelles et Time Intelligence.
+* **Tables de faits (*)** :
+  * `FactVentes` : transactions de vente détaillées (quantités, montants bruts, remises, coûts, marges) ;
+  * `FactLivraisons` : expéditions, dates d'engagement vs dates réelles, statut OTIF ;
+  * `FactObjectifs` : cibles budgétaires par canal, région et période.
+* **Paramètres** :
+  * `ParamRemise` : scénarios et simulation de sensibilité aux remises commerciales.
+
+---
+
+## 📐 Organisation des Mesures DAX
+
+Pour assurer la maintenabilité et la lisibilité du modèle, les calculs DAX sont centralisés et structurés dans des **dossiers d'affichage (Display Folders)** thématiques :
+
+![Table des mesures](images/table%20des%20mesures.png)
+
+* `01 Synthese` : Mesures fondamentales de pilotage (`CA net`, `Marge brute`, `Taux de marge`, `Objectif CA`, `Atteinte objectif`) ;
+* `02 Produits` : Analyses de marge unitaire, prix moyen et mix produit ;
+* `03 Clients` : Métriques client (panier moyen, valeur vie, fréquence d'achat) ;
+* `04 Performance` : Ratios de croissance et comparaisons N vs N-1 ;
+* `05 Service & OTIF` : Calculs de service logistique (`OTIF %`, `On Time %`, `In Full %`, `Fill rate %`, `Retard moyen`) ;
+* `06 Classements & Pareto` : Rangs dynamiques, top N et analyse ABC ;
+* `07 Temps & simulation` : Fonctions d'intelligence temporelle (`YTD`, `SAMEPERIODLASTYEAR`) et tables de paramètres `What-If`.
+
+---
+
+## 📁 Contenu du dépôt
+
+| Fichier / Dossier | Description |
+| :--- | :--- |
+| `powerbi-sales-supplychain-analytics.pbix` | Rapport Power BI Desktop interactif complet avec modèle, DAX et visuels |
+| `Donnees_CSV/` | Données sources tabulaires (Dimensions, Faits et Paramètres) |
+| `images/` | Captures d'écran haute définition des pages du rapport, du modèle et des mesures |
+| `README.md` | Présentation documentée du projet |
+
+---
+
+## 🛠️ Compétences mises en pratique
+
+* **ETL & Préparation de données (Power Query)** : Nettoyage, standardisation des types, fusion de clés et transformations de données ;
+* **Modélisation dimensionnelle (Star Schema)** : Structuration en tables de faits et de dimensions, relations 1-à-plusieurs, direction de filtre unidirectionnelle ;
+* **Calculs & Logique DAX** : Mesures d'agrégation, calculs de ratios complexes, fonctions de Time Intelligence (`SAMEPERIODLASTYEAR`, `YTD`), filtres de contexte (`CALCULATE`, `FILTER`, `USERELATIONSHIP`) ;
+* **Data Visualisation & Storytelling** : Conception d'interfaces épurées et intuitives, cartes KPI, jauges d'objectifs, graphiques combinés et ergonomie de navigation ;
+* **Analyse Métier Ventes & Supply Chain** : Modélisation des indicateurs de rentabilité commerciale et du taux de service logistique (OTIF).
+
+---
+
+## 🚀 Consultation du rapport
+
+1. Télécharger et installer **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)** ;
+2. Cloner le dépôt :
    ```bash
    git clone https://github.com/hctsamyUCT/powerbi-sales-supplychain-analytics.git
    ```
 3. Ouvrir le fichier `powerbi-sales-supplychain-analytics.pbix` dans Power BI Desktop ;
-4. Si nécessaire, réajuster le chemin de la source de données vers le dossier local `Donnees_CSV/` (*Transformer les données > Paramètres de la source de données*) ;
+4. Si nécessaire, réajuster le chemin des sources de données locales vers le dossier `Donnees_CSV/` (*Transformer les données > Paramètres de la source de données*) ;
 5. Cliquer sur **Actualiser**.
